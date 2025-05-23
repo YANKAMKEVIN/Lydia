@@ -21,4 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Lydia"
 include(":app")
- 
+include(":core:testing")
+include(":core:common")
+include(":data")
+include(":domain")
+include(":presentation")

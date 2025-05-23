@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_screen_title">Oups il semblerait qu\'il y ait eu un soucis</string>
+    <string name="error_screen_description">Nous avons rencontré un soucis, veuillez réessayer s\'il vous plait</string>
+    <string name="error_screen_button_text">Réessayer</string>
+    <string name="list_screen_real_estate_image_content_desc">Real Estate Image</string>
+    <string name="list_screen_title">SE LOGER</string>
+    <string name="list_screen_price_format">%1$s €</string>
+    <string name="list_screen_property_type_label">Type de bien</string>
+    <string name="list_screen_separator"> • </string>
+    <string name="list_screen_area_format">%1$s m²</string>
+    <string name="list_screen_rooms_format">%1$s pièce</string>
+    <string name="list_screen_bedrooms_format">%1$s chambres</string>
+    <string name="list_screen_offer_type_build">Achat projet de construction</string>
+    <string name="list_screen_offer_type_house">Achat maison</string>
+    <string name="contact_action_button_call">Appeler</string>
+    <string name="contact_action_button_message">Message</string>
+    <string name="details_screen_proposition_button">Proposer un prix</string>
+    <string name="loan_simulation_text">Simuler mon credit</string>
+    <string name="loan_simulation_description">Plus d\'infos</string>
+    <string name="price_per_square_meter_text">%1$s / m²</string>
+</resources>
