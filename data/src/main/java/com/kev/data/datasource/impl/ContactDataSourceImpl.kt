@@ -5,6 +5,7 @@ import com.kev.data.datasource.ContactDataSource
 import com.kev.data.model.ContactListResponse
 import com.kev.lydia.common.network.NetworkResponse
 import com.kev.lydia.common.network.NetworkUtil
+import javax.inject.Inject
 
 /**
  * Implementation of the [ContactDataSource] interface.
@@ -13,7 +14,7 @@ import com.kev.lydia.common.network.NetworkUtil
  *
  * @param contactApi The API service used to fetch data.
  */
-class ContactDataSourceImpl(
+class ContactDataSourceImpl @Inject constructor(
     private val contactApi: ContactApi
 ) : ContactDataSource {
 
