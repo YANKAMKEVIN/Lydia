@@ -15,6 +15,6 @@ interface ContactRepository {
      *
      * @return A [Flow] emitting a list of [Contact] containing the list of real estate.
      */
-    suspend fun fetchContacts(): Flow<List<Contact>>
+    suspend fun fetchContacts(page: Int): Flow<List<Contact>>
 
 }
