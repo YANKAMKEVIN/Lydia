@@ -1,7 +1,7 @@
-package com.kev.data.datasource.impl
+package com.kev.data.datasource.remote.impl
 
 import com.kev.data.api.ContactApi
-import com.kev.data.datasource.ContactDataSource
+import com.kev.data.datasource.remote.ContactDataSource
 import com.kev.data.model.ContactListResponse
 import com.kev.lydia.common.network.NetworkResponse
 import com.kev.lydia.common.network.NetworkUtil

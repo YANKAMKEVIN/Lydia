@@ -1,8 +1,8 @@
 package com.kev.data.di
 
 import com.kev.data.api.ContactApi
-import com.kev.data.datasource.ContactDataSource
-import com.kev.data.datasource.impl.ContactDataSourceImpl
+import com.kev.data.datasource.remote.ContactDataSource
+import com.kev.data.datasource.remote.impl.ContactDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

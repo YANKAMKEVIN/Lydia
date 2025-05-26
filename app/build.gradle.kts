@@ -42,7 +42,6 @@ android {
 }
 
 dependencies {
-
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -67,5 +66,5 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":data"))
     implementation(project(":domain"))
-
+    implementation(project(":presentation"))
 }

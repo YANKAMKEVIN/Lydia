@@ -1,5 +1,6 @@
 package com.kev.domain.repository
 
+import androidx.paging.PagingData
 import com.kev.domain.model.Contact
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +16,6 @@ interface ContactRepository {
      *
      * @return A [Flow] emitting a list of [Contact] containing the list of real estate.
      */
-    suspend fun fetchContacts(page: Int): Flow<List<Contact>>
+    suspend fun fetchContacts(): Flow<PagingData<Contact>>
 
 }

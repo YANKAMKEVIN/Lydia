@@ -1,4 +1,4 @@
-package com.kev.data.datasource
+package com.kev.data.datasource.remote
 
 import com.kev.data.model.ContactListResponse
 import com.kev.lydia.common.network.NetworkResponse

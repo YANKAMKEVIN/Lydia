@@ -1,6 +1,6 @@
 package com.kev.data.di
 
-import com.kev.data.datasource.ContactDataSource
+import com.kev.data.datasource.remote.ContactDataSource
 import com.kev.data.repository.ContactRepositoryImpl
 import com.kev.domain.repository.ContactRepository
 import dagger.Module

@@ -1,12 +1,13 @@
 package com.kev.data.repository
 
-import com.kev.data.datasource.ContactDataSource
-import com.kev.data.mapper.ContactMapper.toDomain
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.kev.data.datasource.ContactPagingSource
+import com.kev.data.datasource.remote.ContactDataSource
 import com.kev.domain.model.Contact
 import com.kev.domain.repository.ContactRepository
-import com.kev.lydia.common.network.NetworkResponse
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 /**
@@ -24,17 +25,9 @@ class ContactRepositoryImpl @Inject constructor(
      *
      * @return A [Flow] emitting a list of [Contact] containing the list of contacts.
      */
-    override suspend fun fetchContacts(page: Int): Flow<List<Contact>> = flow {
-        when (val response = contactDataSource.fetchContacts(page)) {
-            is NetworkResponse.Success -> {
-                val realEstateListings = response.data.results.map { it.toDomain() }
-                emit(realEstateListings)
-            }
-
-            is NetworkResponse.Failure -> {
-                throw Exception("Error ${response.error.message}: ${response.error.code}")
-            }
-        }
-    }
-
+    override suspend fun fetchContacts(): Flow<PagingData<Contact>> =
+        Pager(
+            config = PagingConfig(pageSize = 20, prefetchDistance = 2),
+            pagingSourceFactory = { ContactPagingSource(contactDataSource) },
+        ).flow
 }
