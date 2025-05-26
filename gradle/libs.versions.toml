@@ -1,23 +1,25 @@
 [versions]
+activityCompose = "1.10.1"
 agp = "8.9.0"
-hilt = "2.55"
-coreTesting = "2.1.0"
-kotlin = "2.0.21"
+androidxHiltNavigationCompose = "1.2.0"
+appcompat = "1.7.0"
+composeBom = "2025.03.00"
 coreKtx = "1.16.0"
+coreTesting = "2.1.0"
+espressoCore = "3.6.1"
+hilt = "2.55"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-kotlinxCoroutines = "1.7.3"
-espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.9.0"
-activityCompose = "1.10.1"
-composeBom = "2024.09.00"
-navigationCompose = "2.8.9"
-retrofit = "2.9.0"
-mockk = "1.13.4"
+kotlin = "2.1.10"
 kotlinTest = "1.8.10"
-appcompat = "1.7.0"
+kotlinxCoroutines = "1.7.3"
+lifecycleRuntimeKtx = "2.9.0"
 material = "1.12.0"
-androidxHiltNavigationCompose="1.2.0"
+mockk = "1.13.4"
+navigationCompose = "2.8.9"
+pagingCompose = "1.0.0-alpha18"
+pagingRuntime = "3.1.1"
+retrofit = "2.9.0"
 
 
 [libraries]
@@ -48,6 +50,8 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagingRuntime" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
