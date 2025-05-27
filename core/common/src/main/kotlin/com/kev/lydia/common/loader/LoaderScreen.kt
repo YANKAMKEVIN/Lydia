@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kev.aviv.common.R
+import com.kev.lydia.common.R
 
 @Composable
 fun LoaderScreen(
@@ -55,7 +55,6 @@ fun ReloadScreen(
             ),
         verticalArrangement = Arrangement.Center
     ) {
-        ThousandsPickerSeparator2()
         Image(
             painter = painterResource(
                 R.drawable.ic_error
