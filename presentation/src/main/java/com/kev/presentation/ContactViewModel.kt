@@ -20,9 +20,9 @@ class ContactViewModel @Inject constructor(
     override fun createInitialState(): ContactState = ContactState()
 
 
-    private val _moviesState: MutableStateFlow<PagingData<Contact>> =
+    private val _contactsState: MutableStateFlow<PagingData<Contact>> =
         MutableStateFlow(value = PagingData.empty())
-    val moviesState: MutableStateFlow<PagingData<Contact>> get() = _moviesState
+    val contactsState: MutableStateFlow<PagingData<Contact>> get() = _contactsState
 
     init {
         onEvent(HomeEvent.GetHome)
@@ -43,7 +43,7 @@ class ContactViewModel @Inject constructor(
             .distinctUntilChanged()
             .cachedIn(viewModelScope)
             .collect {
-                _moviesState.value = it
+                _contactsState.value = it
             }
     }
 
