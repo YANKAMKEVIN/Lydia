@@ -1,6 +1,7 @@
 package com.kev.domain.model
 
 data class Contact(
+    val id: String,
     val fullName: String,
     val email: String,
     val phone: String,
