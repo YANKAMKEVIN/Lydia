@@ -1,4 +1,4 @@
-package com.kev.presentation
+package com.kev.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

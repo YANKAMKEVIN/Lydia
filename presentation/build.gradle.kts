@@ -68,11 +68,12 @@ dependencies {
     implementation(libs.coil)
 
     //Navigation
-   // implementation(libs.androidx.compose.material3.adaptive.navigation)
-   // implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
+   implementation(libs.androidx.adaptive.navigation.android)
+   //implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
 
     //Hilt
     implementation(libs.hilt.android)
+    implementation(libs.androidx.adaptive.navigation.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 

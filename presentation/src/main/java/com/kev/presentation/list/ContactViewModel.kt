@@ -1,4 +1,4 @@
-package com.kev.presentation
+package com.kev.presentation.list
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
