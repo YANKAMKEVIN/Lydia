@@ -1,5 +1,6 @@
 package com.kev.data.di
 
+import com.kev.data.datasource.local.ContactDatabase
 import com.kev.data.datasource.remote.ContactDataSource
 import com.kev.data.repository.ContactRepositoryImpl
 import com.kev.domain.repository.ContactRepository
@@ -14,7 +15,10 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Provides
     @Singleton
-    fun provideContactRepository(contactDataSource: ContactDataSource): ContactRepository {
-        return ContactRepositoryImpl(contactDataSource)
+    fun provideContactRepository(
+        contactDataSource: ContactDataSource,
+        contactDatabase: ContactDatabase
+    ): ContactRepository {
+        return ContactRepositoryImpl(contactDataSource, contactDatabase)
     }
 }

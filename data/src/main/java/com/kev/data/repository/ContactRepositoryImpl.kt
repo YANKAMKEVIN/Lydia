@@ -1,13 +1,18 @@
 package com.kev.data.repository
 
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.kev.data.datasource.ContactPagingSource
+import androidx.paging.map
+import com.kev.data.datasource.local.ContactDatabase
 import com.kev.data.datasource.remote.ContactDataSource
+import com.kev.data.datasource.remote.ContactRemoteMediator
+import com.kev.data.mapper.ContactMapper.toDomain
 import com.kev.domain.model.Contact
 import com.kev.domain.repository.ContactRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 /**
@@ -15,8 +20,10 @@ import javax.inject.Inject
  * This class is responsible for processing the data retrieved from the [ContactDataSource]
  * and transforming it into the domain model before passing it to the use cases.
  */
+@OptIn(ExperimentalPagingApi::class)
 class ContactRepositoryImpl @Inject constructor(
-    private val contactDataSource: ContactDataSource
+    private val contactDataSource: ContactDataSource,
+    private val contactDatabase: ContactDatabase
 ) : ContactRepository {
 
     /**
@@ -28,6 +35,10 @@ class ContactRepositoryImpl @Inject constructor(
     override suspend fun fetchContacts(): Flow<PagingData<Contact>> =
         Pager(
             config = PagingConfig(pageSize = 20, prefetchDistance = 2),
-            pagingSourceFactory = { ContactPagingSource(contactDataSource) },
-        ).flow
+            remoteMediator = ContactRemoteMediator(
+                contactDataSource = contactDataSource,
+                contactDatabase = contactDatabase
+            ),
+            pagingSourceFactory = { contactDatabase.contactDao.pagingSource() },
+        ).flow.map { it.map { entity -> entity.toDomain() } }
 }
