@@ -1,6 +1,5 @@
-package com.kev.presentation
+package com.kev.presentation.list
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -12,19 +11,33 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.kev.domain.model.Contact
 import com.kev.presentation.component.ContactItem
+import com.kev.presentation.component.ErrorMessage
+import com.kev.presentation.component.LoadingNextPageItem
+import com.kev.presentation.component.PageLoader
 
 @Composable
-fun ContactListScreen(
-    viewModel: ContactViewModel = hiltViewModel()
+fun ContactListRoute(
+    viewModel: ContactViewModel = hiltViewModel(),
+    onNavigateToDetail: (contact: Contact) -> Unit,
 ) {
     val contactsPagingItems: LazyPagingItems<Contact> =
         viewModel.contactsState.collectAsLazyPagingItems()
+
+    ContactListScreen(contactsPagingItems, onNavigateToDetail)
+}
+
+@Composable
+fun ContactListScreen(
+    contactsPagingItems: LazyPagingItems<Contact>,
+    onNavigateToDetail: (contact: Contact) -> Unit
+) {
+
     LazyColumn(modifier = Modifier.padding(10.dp)) {
         items(contactsPagingItems.itemCount) { index ->
             contactsPagingItems[index]?.let { contact ->
                 ContactItem(
                     contact = contact,
-                    onClick = {  }
+                    onClick = { onNavigateToDetail(contact) }
                 )
             }
         }
