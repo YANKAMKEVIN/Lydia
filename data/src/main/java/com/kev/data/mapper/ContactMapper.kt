@@ -9,12 +9,16 @@ object ContactMapper {
     fun ContactDto.toContactEntity(): ContactEntity {
         return ContactEntity(
             id = login.uuid,
-            fullName = name.first + " " + name.last,
+            fullName = name.title + " " + name.first + " " + name.last,
             email = email,
             phone = phone,
             avatarUrl = picture.large,
             country = location.country,
             city = location.city,
+            gender = gender,
+            age = dob.age,
+            registeredDate = registered.date,
+            username = login.username
         )
     }
 
@@ -27,6 +31,10 @@ object ContactMapper {
             avatarUrl = avatarUrl,
             country = country,
             city = city,
+            gender = gender,
+            age = age,
+            registeredDate = registeredDate,
+            username = username
         )
     }
 }

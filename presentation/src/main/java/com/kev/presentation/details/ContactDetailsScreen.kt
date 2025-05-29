@@ -18,7 +18,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
@@ -26,7 +28,6 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -43,34 +44,30 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.kev.domain.model.Contact
+import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactDetailScreen(
     contact: Contact,
     onNavigateBack: () -> Unit
 ) {
-    contact.let { c ->
-        // Pour le parallax header
+    contact.let {
         val scroll = rememberScrollState(0)
         Box {
-            // 1) Header image avec overlay
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(300.dp)
                     .graphicsLayer {
-                        // Effet parallax en fonction du scroll
                         translationY = scroll.value * 0.5f
                     }
             ) {
                 AsyncImage(
-                    model = c.avatarUrl,
+                    model = it.avatarUrl,
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
-                // Overlay gradient
                 Box(
                     modifier = Modifier
                         .matchParentSize()
@@ -98,14 +95,12 @@ fun ContactDetailScreen(
                 }
             }
 
-            // 2) Contenu scrollable
             Column(
                 modifier = Modifier
                     .verticalScroll(scroll)
-                    .padding(top = 260.dp)  // remonte le contenu sur le header
+                    .padding(top = 260.dp)
                     .fillMaxSize()
             ) {
-                // Card principale
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -114,19 +109,18 @@ fun ContactDetailScreen(
                     elevation = CardDefaults.cardElevation(8.dp)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(c.fullName, style = MaterialTheme.typography.headlineSmall)
+                        Text(it.fullName, style = MaterialTheme.typography.headlineSmall)
                         Spacer(Modifier.height(8.dp))
-                        InfoRow(icon = Icons.Default.Email, text = c.email)
+                        InfoRow(icon = Icons.Default.Email, text = it.email)
                         Spacer(Modifier.height(4.dp))
-                        InfoRow(icon = Icons.Default.Phone, text = c.phone)
+                        InfoRow(icon = Icons.Default.Phone, text = it.phone)
                         Spacer(Modifier.height(4.dp))
-                        InfoRow(icon = Icons.Default.Home, text = "${c.city}, ${c.country}")
+                        InfoRow(icon = Icons.Default.Home, text = "${it.city}, ${it.country}")
                     }
                 }
 
                 Spacer(Modifier.height(16.dp))
 
-                // Section “Infos complémentaires”
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -140,29 +134,32 @@ fun ContactDetailScreen(
                             style = MaterialTheme.typography.titleMedium
                         )
                         Spacer(Modifier.height(8.dp))
-                       /* InfoRow(icon = Icons.Default.Face, text = "Age : ${c.dobAge}")
+                        InfoRow(icon = Icons.Default.Face, text = "Age : ${it.age}")
                         Spacer(Modifier.height(4.dp))
                         InfoRow(
-                            icon = Icons.Default.CalendarToday,
-                            text = "Né(e) le : ${c.dobDate.take(10)}"
+                            icon = Icons.Default.DateRange,
+                            text = "Date de subscription : ${it.registeredDate.take(10)}"
                         )
                         Spacer(Modifier.height(4.dp))
                         InfoRow(
-                            icon = Icons.Default.Badge,
-                            text = "${c.idName} : ${c.idValue ?: "N/A"}"
+                            icon = Icons.Default.AccountCircle,
+                            text = "Username : ${it.username}"
                         )
                         Spacer(Modifier.height(4.dp))
                         InfoRow(
                             icon = Icons.Default.Person,
-                            text = "Genre : ${c.gender.capitalize()}"
-                        )*/
+                            text = "Genre : ${it.gender.replaceFirstChar {
+                                if (it.isLowerCase()) it.titlecase(
+                                    Locale.ROOT
+                                ) else it.toString()
+                            }}"
+                        )
                     }
                 }
 
-                Spacer(Modifier.height(80.dp)) // pour le FAB
+                Spacer(Modifier.height(80.dp))
             }
 
-            // 3) FABs pour action rapide
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -170,11 +167,11 @@ fun ContactDetailScreen(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.End
             ) {
-                FloatingActionButton(onClick = { /* lancer un appel */ }) {
+                FloatingActionButton(onClick = { }) {
                     Icon(Icons.Default.Call, contentDescription = "Appeler")
                 }
                 Spacer(Modifier.height(12.dp))
-                FloatingActionButton(onClick = { /* ouvrir mail client */ }) {
+                FloatingActionButton(onClick = {  }) {
                     Icon(Icons.Default.Email, contentDescription = "Envoyer un e-mail")
                 }
             }
