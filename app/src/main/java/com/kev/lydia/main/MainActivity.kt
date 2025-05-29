@@ -1,5 +1,6 @@
 package com.kev.lydia.main
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.core.animation.addListener
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.kev.lydia.ui.LydiaApp
@@ -38,22 +40,19 @@ class MainActivity : ComponentActivity() {
                     0.4f,
                     0.0f
                 )
-                zoomX.interpolator = OvershootInterpolator()
-                zoomX.duration = 500L
-                zoomX.doOnEnd { screen.remove() }
-
                 val zoomY = ObjectAnimator.ofFloat(
                     screen.iconView,
                     View.SCALE_Y,
                     0.4f,
                     0.0f
                 )
-                zoomY.interpolator = OvershootInterpolator()
-                zoomY.duration = 500L
-                zoomY.doOnEnd { screen.remove() }
+                AnimatorSet().apply {
+                    playTogether(zoomX, zoomY)
+                    duration = 500L
+                    interpolator = OvershootInterpolator()
+                    addListener(onEnd = { screen.remove() })
+                }.start()
 
-                zoomX.start()
-                zoomY.start()
             }
         }
 
