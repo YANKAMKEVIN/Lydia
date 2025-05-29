@@ -2,6 +2,7 @@ package com.kev.presentation.details
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,6 +35,7 @@ fun DetailHeader(
             .fillMaxWidth()
             .height(300.dp)
             .graphicsLayer { translationY = scrollState.value * 0.5f }
+
     ) {
         AsyncImage(
             model = avatarUrl,
@@ -52,7 +54,7 @@ fun DetailHeader(
                 )
         )
         IconButton(
-            onClick = onBack,
+            onClick = { onBack() },
             modifier = Modifier
                 .padding(16.dp)
                 .size(36.dp)

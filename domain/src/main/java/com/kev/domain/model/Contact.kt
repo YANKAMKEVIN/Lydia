@@ -1,5 +1,9 @@
 package com.kev.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Contact(
     val id: String,
     val fullName: String,
@@ -12,4 +16,4 @@ data class Contact(
     val country: String,
     val age: Int,
     val registeredDate: String,
-)
+) : Parcelable

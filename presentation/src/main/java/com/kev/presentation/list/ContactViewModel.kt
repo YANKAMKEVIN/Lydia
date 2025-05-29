@@ -19,7 +19,6 @@ class ContactViewModel @Inject constructor(
 ) : BaseViewModel<ContactState>() {
     override fun createInitialState(): ContactState = ContactState()
 
-
     private val _contactsState: MutableStateFlow<PagingData<Contact>> =
         MutableStateFlow(value = PagingData.empty())
     val contactsState: MutableStateFlow<PagingData<Contact>> get() = _contactsState
@@ -28,17 +27,17 @@ class ContactViewModel @Inject constructor(
         onEvent(HomeEvent.GetHome)
     }
 
-    fun onEvent(event: HomeEvent) {
+    private fun onEvent(event: HomeEvent) {
         viewModelScope.launch {
             when (event) {
                 is HomeEvent.GetHome -> {
-                    getMovies()
+                    fetchCards()
                 }
             }
         }
     }
 
-    private suspend fun getMovies() {
+    private suspend fun fetchCards() {
         getContactsListUseCase()
             .distinctUntilChanged()
             .cachedIn(viewModelScope)

@@ -24,6 +24,7 @@ retrofit = "2.9.0"
 room = "2.5.1"
 adaptiveNavigationAndroid = "1.1.0"
 androidx-core-splashscreen = "1.0.1"
+accompanist-refresh-version = "0.30.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -61,6 +62,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
 androidx-adaptive-navigation-android = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation-android", version.ref = "adaptiveNavigationAndroid" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-core-splashscreen" }
+accompanist-swipe-refresh = {group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "accompanist-refresh-version"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
