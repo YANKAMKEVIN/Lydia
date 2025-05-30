@@ -60,7 +60,6 @@ fun ReloadScreen(
                 R.drawable.ic_error
             ), contentDescription = null,
             Modifier
-                // .size(150.dp)
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 24.dp)
         )

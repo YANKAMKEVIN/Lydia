@@ -45,7 +45,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             val content = navigator.currentDestination?.contentKey as Contact?
             AnimatedPane {
                 if (content != null)
-                    ContactDetailScreen(contact = content, onNavigateBack = {})
+                    ContactDetailScreen(contact = content, onNavigateBack = {
+                        scope.launch {
+                            navigator.navigateBack()
+                        }
+                    })
                 else
                     Column(
                         modifier = Modifier

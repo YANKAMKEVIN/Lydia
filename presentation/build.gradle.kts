@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -68,8 +69,7 @@ dependencies {
     implementation(libs.coil)
 
     //Navigation
-   implementation(libs.androidx.adaptive.navigation.android)
-   //implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
+    implementation(libs.androidx.adaptive.navigation.android)
 
     //Hilt
     implementation(libs.hilt.android)

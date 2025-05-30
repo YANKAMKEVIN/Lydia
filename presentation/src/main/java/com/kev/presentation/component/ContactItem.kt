@@ -1,9 +1,11 @@
 package com.kev.presentation.component
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -11,8 +13,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,50 +33,38 @@ import com.kev.domain.model.Contact
 @Composable
 fun ContactItem(
     contact: Contact,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(vertical = 4.dp)
-            .clickable { onClick() },
-        shape = RoundedCornerShape(8.dp),
+            .height(72.dp),
+        shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .fillMaxSize()
+                .padding(horizontal = 12.dp)
         ) {
-            // Image de l’avatar
             AsyncImage(
                 model = contact.avatarUrl,
-                contentDescription = "${contact.fullName} avatar",
+                contentDescription = null,
                 modifier = Modifier
-                    .size(56.dp)
-                    .clip(CircleShape),
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f), CircleShape),
                 contentScale = ContentScale.Crop
             )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
+            Spacer(Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = contact.fullName,
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = contact.email,
-                    style = MaterialTheme.typography.bodySmall
-                )
-                Spacer(modifier = Modifier.height(2.dp))
-                Text(
-                    text = contact.city,
-                    style = MaterialTheme.typography.bodySmall
-                )
+                Text(contact.fullName, style = MaterialTheme.typography.titleMedium)
+                Text(contact.city, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null)
         }
     }
 }
