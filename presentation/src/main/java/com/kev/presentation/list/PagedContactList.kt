@@ -56,6 +56,9 @@ fun PagedContactList(
 
                     loadState.refresh is LoadState.Error -> {
                         val error = contactsPagingItems.loadState.refresh as LoadState.Error
+                        repeat(3) {
+                            item { ContactItemPlaceholder() }
+                        }
                         item {
                             ErrorMessage(
                                 modifier = Modifier.fillParentMaxSize(),
@@ -70,6 +73,9 @@ fun PagedContactList(
 
                     loadState.append is LoadState.Error -> {
                         val error = contactsPagingItems.loadState.append as LoadState.Error
+                        repeat(3) {
+                            item { ContactItemPlaceholder() }
+                        }
                         item {
                             ErrorMessage(
                                 modifier = Modifier,

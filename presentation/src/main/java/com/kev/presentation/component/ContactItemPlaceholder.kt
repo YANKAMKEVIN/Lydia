@@ -3,6 +3,7 @@ package com.kev.presentation.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ fun ContactItemPlaceholder() {
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
+            .padding(vertical = 4.dp)
             .height(72.dp)
             .background(
                 shimmerBrush(true),
