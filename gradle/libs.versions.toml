@@ -24,7 +24,9 @@ retrofit = "2.9.0"
 room = "2.5.1"
 adaptiveNavigationAndroid = "1.1.0"
 androidx-core-splashscreen = "1.0.1"
-accompanist-refresh-version = "0.30.1"
+androidxTestCoreVersion = "1.5.0"
+coreKtxVersion = "1.6.1"
+robolectricVersion = "4.10.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,9 +62,12 @@ coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+androidx-room-testing    = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 androidx-adaptive-navigation-android = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation-android", version.ref = "adaptiveNavigationAndroid" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-core-splashscreen" }
-accompanist-swipe-refresh = {group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "accompanist-refresh-version"}
+androidx-test-core = { group = "androidx.test", name = "core", version = "androidxTestCoreVersion" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectricVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -70,4 +75,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-

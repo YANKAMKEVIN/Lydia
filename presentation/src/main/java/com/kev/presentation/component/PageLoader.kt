@@ -52,7 +52,6 @@ fun ErrorMessage(
     Row(
         modifier = modifier.padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = message,
